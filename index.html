@@ -10,14 +10,13 @@
             margin: 0;
             padding: 0;
             background-color: #1a1a1a;
-            /* 어두운 나무 책상 느낌의 배경 */
             background-image: 
                 linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
                 url('https://www.transparenttextures.com/patterns/dark-wood.png');
             color: #e0e0e0;
             font-family: 'Nanum+Myeongjo', serif;
             display: flex;
-            align-items: center;
+            align-items: flex-start; /* 모바일에서 상단부터 시작하도록 */
             justify-content: center;
             min-height: 100vh;
             overflow-x: hidden;
@@ -26,110 +25,113 @@
         .desk {
             position: relative;
             width: 100%;
-            max-width: 900px;
-            padding: 50px 20px;
+            max-width: 1000px;
+            padding: 20px 10px; /* 여백 축소 */
             display: flex;
             flex-direction: column;
             align-items: center;
+            box-sizing: border-box;
         }
 
-        /* 사진 프레임 (폴라로이드 느낌) */
+        /* 사진 프레임 (모바일 최적화) */
         .evidence-photo {
             position: relative;
             background: #f4f4f4;
-            padding: 15px 15px 60px 15px; /* 하단에 여백을 두어 메모 공간 확보 */
-            box-shadow: 10px 15px 25px rgba(0,0,0,0.7);
-            transform: rotate(-1.5deg); /* 살짝 기울여서 자연스럽게 */
+            padding: 10px 10px 50px 10px;
+            box-shadow: 5px 10px 20px rgba(0,0,0,0.7);
+            transform: rotate(-0.5deg);
             border-radius: 2px;
-            max-width: 100%;
-            transition: transform 0.3s ease;
-        }
-
-        .evidence-photo:hover {
-            transform: rotate(0deg) scale(1.01);
+            width: 95%; /* 화면에 꽉 차게 */
+            max-width: 850px;
+            box-sizing: border-box;
         }
 
         .evidence-photo img {
             display: block;
             width: 100%;
-            max-width: 750px;
             height: auto;
             border: 1px solid #ddd;
         }
 
-        /* 테이프 효과 */
+        /* 테이프 효과 (모바일 크기 조정) */
         .tape {
             position: absolute;
-            width: 120px;
-            height: 35px;
+            width: 80px;
+            height: 30px;
             background-color: rgba(220, 210, 180, 0.4);
             backdrop-filter: blur(1px);
-            box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
             z-index: 10;
         }
 
-        .tape-tl { top: -15px; left: -30px; transform: rotate(-45deg); border-left: 2px dashed rgba(0,0,0,0.05); border-right: 2px dashed rgba(0,0,0,0.05); }
-        .tape-tr { top: -15px; right: -30px; transform: rotate(45deg); border-left: 2px dashed rgba(0,0,0,0.05); border-right: 2px dashed rgba(0,0,0,0.05); }
+        .tape-tl { top: -10px; left: -15px; transform: rotate(-35deg); }
+        .tape-tr { top: -10px; right: -15px; transform: rotate(35deg); }
 
-        /* 수사 스탬프 */
+        /* 수사 스탬프 (크기 및 위치 조정) */
         .stamp {
             position: absolute;
-            bottom: 80px;
-            right: 30px;
-            border: 4px double #9e1b11;
+            bottom: 65px;
+            right: 20px;
+            border: 3px double #9e1b11;
             color: #9e1b11;
-            font-size: 1.8rem;
+            font-size: 1.2rem;
             font-weight: bold;
-            padding: 5px 15px;
-            transform: rotate(-20deg);
-            opacity: 0.7;
-            user-select: none;
+            padding: 3px 10px;
+            transform: rotate(-15deg);
+            opacity: 0.6;
             pointer-events: none;
-            font-family: sans-serif;
-            letter-spacing: 2px;
-            z-index: 5;
+            letter-spacing: 1px;
         }
 
         /* 하단 필기 메모 */
         .handwritten-note {
             position: absolute;
-            bottom: 10px;
-            left: 20px;
+            bottom: 8px;
+            left: 15px;
             font-family: 'Nanum Pen Script', cursive;
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             color: #333;
-            letter-spacing: 1px;
         }
 
-        /* 안내 문구 (포스트잇 느낌) */
+        /* 안내 문구 (모바일 가독성 향상) */
         .instruction-tag {
-            margin-top: 40px;
+            margin-top: 30px;
             background: #ebe085;
             color: #443;
-            padding: 15px 25px;
+            padding: 20px 30px;
             font-family: 'Nanum Pen Script', cursive;
-            font-size: 1.6rem;
-            box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+            font-size: 1.8rem; /* 글자 크기 확대 */
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
             transform: rotate(1deg);
-            border-bottom-right-radius: 30px 5px;
-            max-width: 300px;
+            border-bottom-right-radius: 40px 5px;
+            width: 85%;
+            max-width: 400px;
             text-align: center;
+            box-sizing: border-box;
+            line-height: 1.4;
         }
 
         .case-number {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            color: rgba(255,255,255,0.2);
-            font-size: 0.9rem;
+            position: relative;
+            margin-bottom: 15px;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
             letter-spacing: 2px;
+            align-self: flex-start;
+            padding-left: 15px;
+        }
+
+        /* 미디어 쿼리: 아주 작은 화면 대응 */
+        @media (max-width: 480px) {
+            .handwritten-note { font-size: 1.1rem; }
+            .instruction-tag { font-size: 1.5rem; }
+            .tape { width: 60px; }
         }
     </style>
 </head>
 <body>
-    <div class="case-number">CASE FILE: #2026-0415-KB</div>
-
     <div class="desk">
+        <div class="case-number">CASE FILE: #2026-0415-KB</div>
+        
         <div class="evidence-photo">
             <div class="tape tape-tl"></div>
             <div class="tape tape-tr"></div>
@@ -139,7 +141,7 @@
             <div class="stamp">CONFIDENTIAL</div>
             
             <div class="handwritten-note">
-                Evidence Log: 전경비 소지품함 주변에서 발견됨.
+                Evidence Log: 전경비 소지품함 주변 발견.
             </div>
         </div>
 
